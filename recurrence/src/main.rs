@@ -14,7 +14,7 @@ macro_rules! recurrence {
                 Self {
                     buff: Default::default(),
                     cur_index: 0,
-                    buf_size: 0,
+                    buff_size: 0,
                 }
             }
 
@@ -36,7 +36,7 @@ macro_rules! recurrence {
             type Output = $sty;
 
             fn index(&self, index: usize) -> &Self::Output {
-                &self.buf[index]
+                &self.buff[index]
             }
         }
 
@@ -46,8 +46,8 @@ macro_rules! recurrence {
             fn next(&mut self) -> Option<Self::Item> {
                 let $ind = self.cur_index;
                 let res;
-                if $ind < self.buf_size {
-                    res = self.buf[$ind];
+                if $ind < self.buff_size {
+                    res = self.buff[$ind];
                     self.cur_index += 1;
                 } else {
                     let $seq = self;
